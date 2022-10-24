@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: gvstudioddnsnet/django-pg-docker:v.1.1.1
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 env:
     PATH: "/usr/local/bin"
