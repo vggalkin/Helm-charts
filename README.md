@@ -14,13 +14,19 @@ cd Helm-charts/chart
 
 ```yaml
 image:
-  repository: gvstudioddnsnet/django-pg-docker:v.1.1.1
-  pullPolicy: IfNotPresent
+  repository: gvstudioddnsnet/django-pg-docker:v1.1.1
+  pullPolicy: Always
 ```
+4. Применяем
+```console
+helm upgrade --install --namespace default --values db-chart/values.yaml mydb db-chart
+helm upgrade --install --namespace default --values app-chart/values.yaml myapp app-chart
+```
+5. Проверяем, что поды развернуты
+```console
+kubectl get pods
+```
+6. Проверяем, что приложение доступно по адресу ВМ k8s-worker
 
+![django_site](https://user-images.githubusercontent.com/3630798/197576558-c5cf9b50-e31e-4284-8d0e-456ca3f5f12d.png)
 
- Git Hub
-git@github.com:vggalkin/django-pg-docker.git
-
-Docker Hub
-gvstudioddnsnet/django-pg-docker
