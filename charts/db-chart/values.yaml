@@ -1,0 +1,61 @@
+replicaCount: 1
+
+image:
+  repository: postgres:13-alpine
+  pullPolicy: IfNotPresent
+
+env:
+  POSTGRES_DB: "tutorial-dev"
+  POSTGRES_USER: "vinhile"
+  POSTGRES_PASSWORD: "password"
+
+volumeMounts:
+  name: db-volume
+  mountPath: /var/lib/postgresql/data
+
+volumes:
+  name: db-volume
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 5432
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

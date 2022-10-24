@@ -1,0 +1,63 @@
+replicaCount: 1
+
+image:
+  repository: gvstudioddnsnet/django-pg-docker:v.1.0.9
+  pullPolicy: IfNotPresent
+
+env:
+    PATH: "/usr/local/bin"
+    DB_HOST: "mydb-service.default.svc.cluster.local"
+    DB_NAME: "tutorial-dev"
+    DB_USER: "vinhile"
+    DB_PASS: "password"
+
+volumeMounts:
+  name: app-volume
+
+volumes:
+  name: app-volume
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: NodePort
+  port: 3003
+  nodePort: 30007
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

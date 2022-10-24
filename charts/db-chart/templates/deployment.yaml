@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  labels:
+    app: {{ .Release.Name }}
+    component: {{ .Release.Namespace }}
+    release: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+      component: {{ .Release.Namespace }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        component: {{ .Release.Namespace }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: mydb
+        image: {{ .Values.image.repository }}
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        volumeMounts:
+        - name: {{ .Values.volumeMounts.name }}
+          mountPath: {{ .Values.volumeMounts.mountPath }}
+        env:
+        {{- range $key, $value := .Values.env }}
+        - name: {{ $key }}
+          value: {{ $value }}
+        {{- end }}
+      volumes:
+        - name: {{ .Values.volumes.name }}
+
