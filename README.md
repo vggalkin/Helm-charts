@@ -7,7 +7,7 @@ ssh ubuntu@<ip_addr>
 ```
 2. Клонируем репазиторий 
 ```console
-git clone git@github.com:vggalkin/Helm-charts.git
+git clone https://github.com/vggalkin/Helm-charts.git
 cd Helm-charts/chart
 ```
 3. Правим тэг образа на v1.1.1 в app-chart/values.yaml
