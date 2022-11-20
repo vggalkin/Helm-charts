@@ -1,4 +1,4 @@
-# Спринт 2
+# Дипломный проект. Спринт 2
 ## Часть 2
 ### Развертывание приложения 
 1. Заходим на мастер-сервер "k8s-master"
@@ -30,3 +30,4 @@ kubectl get pods
 
 ![django_site](https://user-images.githubusercontent.com/3630798/197576558-c5cf9b50-e31e-4284-8d0e-456ca3f5f12d.png)
 
+[Спринт 3](https://github.com/vggalkin/Monitoring)
